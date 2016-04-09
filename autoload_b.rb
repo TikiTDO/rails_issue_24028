@@ -1,4 +1,3 @@
 class AutoloadB
-  puts "Loading B"
-  #sleep
+  puts "Loaded B"
 end

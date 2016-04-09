@@ -8,10 +8,10 @@ end
 gemfile(true) do
   source 'https://rubygems.org'
   # Activate the gem you are reporting the issue against.
-  gem 'rails', '5.0.0beta3'
-  #gem 'pry'
-  #gem 'pry-stack_explorer'
-  #gem 'pry-byebug'
+  gem 'rails', git: 'https://github.com/rails/rails'
+  gem 'pry'
+  gem 'pry-stack_explorer'
+  gem 'pry-byebug'
   #gem 'ruby-prof'
   #gem 'memory_profiler'
 end
@@ -42,10 +42,12 @@ class TestController < ActionController::Base
 
   def index
     puts "Index"
+
     Thread.new do
+      puts "Started thread to load A"
       AutoloadA
     end.join
-    
+    puts "Done Loading"
     render plain: ''
   end
 end
@@ -59,7 +61,14 @@ class BugTest < Minitest::Test
   include Rack::Test::Methods
 
   def test_returns_success
+    waiter = Thread.new do
+      while true
+        sleep(1.0)
+        puts "Deadlock in Interlock..."
+      end
+    end
     get '/'
+    waiter.kill
   end
 
   private

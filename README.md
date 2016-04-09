@@ -8,8 +8,32 @@ This code seeks to reproduce [Rails Issue 24028](https://github.com/rails/rails/
 
 ## Result
 
-fatal (No live threads left. Deadlock?)
+```
+Index
+Started thread to load A
+Loaded A
+Started thread to load B
+Deadlock in Interlock...
+Deadlock in Interlock...
+Deadlock in Interlock...
+Deadlock in Interlock...
+Deadlock in Interlock...
+Deadlock in Interlock...
+...
+```
 
 ## Expected Result
 
-No Deadlock
+```
+Index
+Started thread to load A
+Loaded A
+Started thread to load B
+Loaded B
+Done Loading
+```
+
+OR
+
+Some sort of error notifying user of (potential) deadlock.
+
