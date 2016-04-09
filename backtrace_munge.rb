@@ -1,5 +1,5 @@
 # Execute the AutoloadB load in a different file to ensure no shared backtrace information
-::RegularLoad = Thread.new do
-  puts "Started thread in A to load B"
+AutoloadA::LoaderB = Thread.new do
+  puts "Started Loader B to load B"
   AutoloadB
 end

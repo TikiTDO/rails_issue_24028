@@ -8,8 +8,8 @@ end
 gemfile(true) do
   source 'https://rubygems.org'
   # Activate the gem you are reporting the issue against.
-  #gem 'rails', git: 'https://github.com/rails/rails'
-  gem 'rails', path: '/home/tiki/rails'
+  gem 'rails', git: 'https://github.com/rails/rails'
+  #gem 'rails', path: '/home/tiki/rails'
   gem 'pry'
   gem 'pry-stack_explorer'
   gem 'pry-byebug'
@@ -44,11 +44,14 @@ class TestController < ActionController::Base
   def index
     puts "Index"
 
-    Thread.new do
-      puts "Started thread to load A"
-      AutoloadA
-    end.join
+    puts "Started load A in main thread"
+    AutoloadA
+
+    puts "Waiting in main thread for A to load B"
+    AutoloadA::LoaderB.join
+
     puts "Done Loading"
+
     render plain: ''
   end
 end
@@ -64,8 +67,8 @@ class BugTest < Minitest::Test
   def test_returns_success
     waiter = Thread.new do
       while true
-        sleep(1.0)
-        binding.pry
+        sleep(2.0)
+        #binding.pry
         puts "Deadlock in Interlock..."
       end
     end
