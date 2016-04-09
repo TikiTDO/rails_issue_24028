@@ -24,7 +24,6 @@ Deadlock in Interlock...
 
 ## Expected Result
 
-<<<<<<< HEAD
 ```
 Index
 Started thread to load A
