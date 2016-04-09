@@ -5,3 +5,11 @@ This code seeks to reproduce [Rails Issue 24028](https://github.com/rails/rails/
 ## Usage
 
 1. Run: `ruby rails_issue_24028.rb`
+
+## Result
+
+fatal (No live threads left. Deadlock?)
+
+## Expected Result
+
+No Deadlock
