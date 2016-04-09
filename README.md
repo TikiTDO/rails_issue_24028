@@ -12,4 +12,4 @@ fatal (No live threads left. Deadlock?)
 
 ## Expected Result
 
-No Deadlock
+No deadlock, or some sort of error from rails.
