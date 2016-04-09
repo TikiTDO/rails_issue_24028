@@ -1,5 +1,5 @@
 class AutoloadA
   puts "Loaded A"
-  Kernel.load('regular_load.rb')
+  Kernel.load('backtrace_munge.rb')
   ::RegularLoad.join
 end

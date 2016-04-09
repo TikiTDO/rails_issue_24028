@@ -8,7 +8,8 @@ end
 gemfile(true) do
   source 'https://rubygems.org'
   # Activate the gem you are reporting the issue against.
-  gem 'rails', git: 'https://github.com/rails/rails'
+  #gem 'rails', git: 'https://github.com/rails/rails'
+  gem 'rails', path: '/home/tiki/rails'
   gem 'pry'
   gem 'pry-stack_explorer'
   gem 'pry-byebug'
@@ -64,6 +65,7 @@ class BugTest < Minitest::Test
     waiter = Thread.new do
       while true
         sleep(1.0)
+        binding.pry
         puts "Deadlock in Interlock..."
       end
     end
