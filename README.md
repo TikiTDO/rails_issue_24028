@@ -22,6 +22,8 @@ Deadlock in Interlock...
 ...
 ```
 
+Loading of B fails due to "only one thread loads" assumption.
+
 ## Expected Result
 
 ```
@@ -37,6 +39,3 @@ OR
 
 Some sort of error notifying user of (potential) deadlock.
 
-=======
-No deadlock, or some sort of error from rails.
->>>>>>> a220656e2307517afd5b264c66f67abbe301a7d0
