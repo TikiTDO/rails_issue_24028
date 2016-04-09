@@ -1,7 +1,5 @@
 class AutoloadA
   puts "Loaded A"
-  Thread.new do
-    puts "Started thread in A to load B"
-    AutoloadB
-  end.join
+  Kernel.load('regular_load.rb')
+  ::RegularLoad.join
 end
