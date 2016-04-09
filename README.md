@@ -26,6 +26,8 @@ Loading of B fails due to "only one thread loads" assumption.
 
 ## Expected Result
 
+The ideal result would be to detect the deadlock, and somehow magically resolve it as so:
+
 ```
 Index
 Started thread to load A
@@ -35,7 +37,5 @@ Loaded B
 Done Loading
 ```
 
-OR
-
-Some sort of error notifying user of (potential) deadlock.
+Alternatively, the system should notify user of the (potential) deadlock.
 
